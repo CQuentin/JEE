@@ -1,0 +1,11 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<Resources>
+	<Resource id="myDS" type="DataSource">
+		JdbcDriver com.mysql.jdbc.Driver
+		JdbcUrl jdbc:mysql://localhost/Annuaire
+		UserName desk
+		Password desk
+		JtaManaged true
+	</Resource>
+</Resources>
