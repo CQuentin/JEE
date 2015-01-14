@@ -31,7 +31,7 @@
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-<!-- 
-	<jee:jndi-lookup id="messageManager" jndi-name="java:global/TPMVC/MessageManager" />
- -->
+
+	<jee:jndi-lookup id="daoPerson" jndi-name="java:global/Annuaire/DAOPerson" />
+
 </beans>
