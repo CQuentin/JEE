@@ -53,12 +53,12 @@ public class DAOPerson implements IDAOPerson {
 	@Override
 	public void addPerson(Person p) {
 		em.persist(p);
-		
 	}
 
 	@Override
 	public void deletePerson(String id) {
-		em.createQuery("Delete from Person p where p.login = ':id'", Person.class).setParameter("id", id).executeUpdate();
+		em.createQuery("Delete from Person p where p.login = :id")
+		.setParameter("id", id).executeUpdate();
 	}
 
 }
