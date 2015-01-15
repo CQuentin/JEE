@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,7 +37,7 @@ public class PersonController {
     
     @ModelAttribute("person")
     public Person newPerson(
-            @RequestParam(value = "id", required = true) String personLogin) {
+            @RequestParam(value = "id", required = false) String personLogin) {
         if (personLogin != null) {
             return daoPerson.findPerson(personLogin);
         }
@@ -50,4 +51,21 @@ public class PersonController {
         p.setPassword("");
         return p;
     }
+  
+    @RequestMapping(value = "/edition.htm", method = RequestMethod.GET)
+    public String editPerson(@ModelAttribute Person p) {
+    	return "personForm";
+    }
+    
+    @RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
+    public String savePerson(@ModelAttribute Person p, BindingResult result) {
+    	
+    	if(result.hasErrors())
+    		return "personForm";
+    	
+    	//daoPerson.savePerson(p);
+    	
+    	return "listPerson";
+    }
+
 }

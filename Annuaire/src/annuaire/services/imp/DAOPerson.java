@@ -47,8 +47,7 @@ public class DAOPerson implements IDAOPerson {
 
 	@Override
 	public void savePerson(Person p) {
-		// TODO Auto-generated method stub
-		
+		em.persist(p);
 	}
 
 }

@@ -1,6 +1,6 @@
 package annuaire.model;
 
-import java.util.Calendar;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +17,8 @@ public class Person {
 	private String firstName;
 	private String mail;
 	private String website;
-	private Calendar dateOfBirth;
+	
+	private Date dateOfBirth;
 	private String password;
 	
 	public String getLogin() {
@@ -50,10 +51,11 @@ public class Person {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-	public Calendar getDateOfBirth() {
+	
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Calendar dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getPassword() {
