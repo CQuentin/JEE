@@ -32,15 +32,21 @@ public class PersonController {
     
     @RequestMapping(value = "/detail.htm", method = RequestMethod.GET)
     public String detailPerson(@ModelAttribute Person p) {
+    	
+    	if(p.getLogin().isEmpty()) {
+    		return "redirect:annuaire.htm";
+    	}
         return "person";
     }
     
     @ModelAttribute("person")
     public Person newPerson(
             @RequestParam(value = "id", required = false) String personLogin) {
-        if (personLogin != null) {
+        
+    	if (personLogin != null) {
             return daoPerson.findPerson(personLogin);
         }
+    	
         Person p = new Person();
         p.setLogin("");
         p.setLastName("");
@@ -60,12 +66,13 @@ public class PersonController {
     @RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
     public String savePerson(@ModelAttribute Person p, BindingResult result) {
     	
-    	if(result.hasErrors())
+    	if(result.hasErrors()) {
     		return "personForm";
+    	}
     	
-    	//daoPerson.savePerson(p);
+    	daoPerson.savePerson(p);
     	
-    	return "listPerson";
+    	return "redirect:detail.htm?id=" + p.getLogin();
     }
 
 }

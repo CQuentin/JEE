@@ -47,7 +47,7 @@ public class DAOPerson implements IDAOPerson {
 
 	@Override
 	public void savePerson(Person p) {
-		em.persist(p);
+		em.merge(p);
 	}
 
 }
