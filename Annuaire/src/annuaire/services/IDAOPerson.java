@@ -14,4 +14,6 @@ public interface IDAOPerson {
 	
 	// modification ou ajout d'une nouvelle personne
 	void savePerson(Person p);
+
+	void addPerson(Person p);
 }

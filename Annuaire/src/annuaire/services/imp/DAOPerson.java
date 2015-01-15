@@ -50,4 +50,10 @@ public class DAOPerson implements IDAOPerson {
 		em.merge(p);
 	}
 
+	@Override
+	public void addPerson(Person p) {
+		em.persist(p);
+		
+	}
+
 }

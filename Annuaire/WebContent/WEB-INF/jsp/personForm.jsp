@@ -12,10 +12,6 @@
 	<form:form method="POST" commandName="person">
 		<table>
 			<tr>
-				<td>Login :</td>
-				<td><form:input path="login" /></td>
-			</tr>
-			<tr>
 				<td>Nom :</td>
 				<td><form:input path="lastName" /></td>
 			</tr>

@@ -74,5 +74,21 @@ public class PersonController {
     	
     	return "redirect:detail.htm?id=" + p.getLogin();
     }
-
+    
+    @RequestMapping(value = "/add.htm")
+    public String addPerson() {
+    	return "personAddition";
+    }
+    
+    @RequestMapping(value = "/add.htm", method = RequestMethod.POST)
+    public String saveNewPerson(@ModelAttribute Person p, BindingResult result) {
+    	
+    	if(result.hasErrors()) {
+    		return "personAddition";
+    	}
+    	
+    	daoPerson.addPerson(p);
+    	
+    	return "redirect:detail.htm?id=" + p.getLogin();
+    }
 }
