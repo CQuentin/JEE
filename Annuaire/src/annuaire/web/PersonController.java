@@ -60,6 +60,9 @@ public class PersonController {
   
     @RequestMapping(value = "/edition.htm", method = RequestMethod.GET)
     public String editPerson(@ModelAttribute Person p) {
+    	if(p.getLogin().isEmpty()) {
+    		return "redirect:annuaire.htm";
+    	}
     	return "personForm";
     }
     
@@ -90,5 +93,17 @@ public class PersonController {
     	daoPerson.addPerson(p);
     	
     	return "redirect:detail.htm?id=" + p.getLogin();
+    }
+    
+    @RequestMapping(value = "/delete.htm", method = RequestMethod.GET)
+    public String deletePerson(@ModelAttribute Person p) {
+    	
+    	if(p.getLogin().isEmpty()) {
+    		return "redirect:annuaire.htm";
+    	}
+    	
+    	daoPerson.deletePerson(p.getLogin());
+    	
+    	return "redirect:annuaire.htm";
     }
 }

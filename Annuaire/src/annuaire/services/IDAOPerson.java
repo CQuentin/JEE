@@ -16,4 +16,6 @@ public interface IDAOPerson {
 	void savePerson(Person p);
 
 	void addPerson(Person p);
+
+	void deletePerson(String id);
 }
