@@ -6,7 +6,7 @@
 <html>
 <body>
 	<c:choose>
-		<c:when test="${empty person}">
+		<c:when test="${empty person || person.login == ''}">
 			<p>Personne inexistante</p>
 		</c:when>
 		<c:otherwise>

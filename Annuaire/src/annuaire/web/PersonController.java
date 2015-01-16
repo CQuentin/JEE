@@ -36,9 +36,6 @@ public class PersonController {
 	@RequestMapping(value = "/detail.htm", method = RequestMethod.GET)
 	public String detailPerson(@ModelAttribute Person p) {
 		
-		if(p == null) {
-			return "redirect:annuaire.htm";
-		}
 		return "person";
 	}
 
