@@ -21,8 +21,6 @@
 	<!-- permet d'indiquer à la servlet qu'elle doit explorer les classes 
 	(des packages listés) et exploiter les annotations. -->
 	<context:component-scan base-package="annuaire.web" />
-	
-	<bean name="/auth.htm" class="annuaire.web.AuthentificationController" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

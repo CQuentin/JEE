@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 
-<c:url var="edit" value="/actions/person/edition.htm" />
-<c:url var="delete" value="/actions/person/delete.htm" />
+<c:url var="edit" value="/person/edition.htm" />
+<c:url var="delete" value="/person/delete.htm" />
 
 <html>
 <body>
@@ -11,7 +11,9 @@
 		</c:when>
 		<c:otherwise>
 			<h1>${person.firstName} ${person.lastName}</h1>
-			<p><a href="${edit}?id=${person.login}">Editer</a></p>
+			<c:if test="${user.login == person.login}">
+				<p><a href="${edit}?id=${person.login}">Editer</a></p>
+			</c:if>
 			<p><a href="${delete}?id=${person.login}">Supprimer</a></p>
 		</c:otherwise>
 	</c:choose>

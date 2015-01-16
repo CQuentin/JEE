@@ -17,6 +17,9 @@ import annuaire.services.IDAOPerson;
 @RequestMapping("/person")
 public class PersonController {
 
+	@Autowired()
+	User user;
+	
 	@Autowired
     IDAOPerson daoPerson;
 	
@@ -37,6 +40,11 @@ public class PersonController {
     		return "redirect:annuaire.htm";
     	}
         return "person";
+    }
+    
+    @ModelAttribute("user")
+    public User newUser() {
+        return user;
     }
     
     @ModelAttribute("person")
@@ -63,6 +71,11 @@ public class PersonController {
     	if(p.getLogin().isEmpty()) {
     		return "redirect:annuaire.htm";
     	}
+    	
+    	if(!p.getLogin().equals(user.getLogin())) {
+    		return "redirect:annuaire.htm";
+    	}
+    	
     	return "personForm";
     }
     
@@ -71,6 +84,10 @@ public class PersonController {
     	
     	if(result.hasErrors()) {
     		return "personForm";
+    	}
+    	
+    	if(!p.getLogin().equals(user.getLogin())) {
+    		return "redirect:annuaire.htm";
     	}
     	
     	daoPerson.savePerson(p);
