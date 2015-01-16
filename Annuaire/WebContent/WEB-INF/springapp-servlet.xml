@@ -31,5 +31,12 @@
 	</bean>
 
 	<jee:jndi-lookup id="daoPerson" jndi-name="java:global/Annuaire/DAOPerson" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/person/*" />
+       		<bean class="annuaire.web.Interceptor" />
+       	</mvc:interceptor>
+	</mvc:interceptors> 
 
 </beans>

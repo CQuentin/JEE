@@ -25,9 +25,6 @@ public class PersonController {
 	
 	@RequestMapping(value = "/annuaire.htm")
 	public String list() {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
 		return "listPerson";
 	}
 
@@ -38,10 +35,8 @@ public class PersonController {
 
 	@RequestMapping(value = "/detail.htm", method = RequestMethod.GET)
 	public String detailPerson(@ModelAttribute Person p) {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
-		if(p.getLogin().isEmpty()) {
+		
+		if(p == null) {
 			return "redirect:annuaire.htm";
 		}
 		return "person";
@@ -73,10 +68,8 @@ public class PersonController {
 
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.GET)
 	public String editPerson(@ModelAttribute Person p) {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
-		if(p.getLogin().isEmpty()) {
+
+		if(p == null || p.getLogin().isEmpty()) {
 			return "redirect:annuaire.htm";
 		}
 
@@ -89,11 +82,13 @@ public class PersonController {
 
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
 	public String savePerson(@ModelAttribute Person p, BindingResult result) {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
+		
 		if(result.hasErrors()) {
 			return "personForm";
+		}
+		
+		if(p == null || p.getLogin().isEmpty()) {
+			return "redirect:annuaire.htm";
 		}
 
 		if(!p.getLogin().equals(user.getLogin())) {
@@ -107,17 +102,12 @@ public class PersonController {
 
 	@RequestMapping(value = "/add.htm")
 	public String addPerson() {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
 		return "personAddition";
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
 	public String saveNewPerson(@ModelAttribute Person p, BindingResult result) {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
+
 		if(result.hasErrors()) {
 			return "personAddition";
 		}
@@ -129,10 +119,8 @@ public class PersonController {
 
 	@RequestMapping(value = "/delete.htm", method = RequestMethod.GET)
 	public String deletePerson(@ModelAttribute Person p) {
-		if(!user.isConnected()) {
-			return "redirect:/auth/login.htm";
-		}
-		if(p.getLogin().isEmpty()) {
+
+		if(p == null || p.getLogin().isEmpty()) {
 			return "redirect:annuaire.htm";
 		}
 
