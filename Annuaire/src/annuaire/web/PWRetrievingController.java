@@ -1,5 +1,7 @@
 package annuaire.web;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -46,7 +48,7 @@ public class PWRetrievingController {
 		if (p == null) {
 			return "redirect:retrievepw.htm";
 		}
-		String generatedPW = "prout";
+		String generatedPW = UUID.randomUUID().toString().substring(0, 8);
 		String message = "Voici votre nouveau mot de passe : \n" + generatedPW 
 				+ "\n vous pourrez le modifier via l'édition.\n" 
 				+ "Si vous n'avez pas demandé une réinitialisation de votre mot de passe, on essaie de vous hacker !!";

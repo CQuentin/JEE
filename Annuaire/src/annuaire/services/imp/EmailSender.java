@@ -36,11 +36,11 @@ public class EmailSender implements IEmailSender {
 		props.put("mail.smtp.port", "587");     
 		
 		Session session = Session.getInstance(props,
-				  new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(mailSender, passwdSender);
-					}
-				  });
+				new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(mailSender, passwdSender);
+			}
+		});
 		        
 		try{
 			Message msg = new MimeMessage(session);

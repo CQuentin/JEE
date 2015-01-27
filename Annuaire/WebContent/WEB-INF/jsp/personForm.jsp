@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html>
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Edition personne</h1>
+	<h1>Edition personne</h1>
 	<form:form method="POST" commandName="person">
 		<table>
 			<tr>
@@ -30,6 +30,10 @@
 			<tr>
 				<td>Date de naissance :</td>
 				<td><form:input path="dateOfBirth" /></td>
+			</tr>
+			<tr>
+				<td>Mot de passe :</td>
+				<td><form:input path="password" /></td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>
