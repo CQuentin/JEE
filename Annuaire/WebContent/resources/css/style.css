@@ -1,0 +1,131 @@
+﻿body
+{
+	background-color: white;
+}
+
+#bloc_page
+{
+	width: 100%;
+	min-width: 1024px;
+	margin: auto;
+	border: black solid 1px;
+	border-radius: 10px 0px 10px 0px;
+	background-color: #d2d4d3;
+}
+
+#header
+{
+	border: solid black 1px;
+	border-radius: 10px 0px 10px 0px;
+	background-color: white;
+}
+
+#logo_luminy
+{
+	float: right;
+}
+
+#nav
+{
+	display: inline-block;
+	width: 12%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#nav h1
+{
+	border: solid black 1px;
+	border-radius: 10px 0px 0px 0px;
+	text-align: center;
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	color: #d2d4d3;
+	background-color: #2d2d2d;
+}
+
+#navigation
+{
+	border: solid black 1px;
+	border-radius: 0px 0px 10px 0px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+}
+
+#navigation a
+{
+	color: #2d2d2d;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+#section
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 85%;
+	min-width: 650px;
+	min-height: 410px;
+	border: solid black 1px;
+	border-radius: 10px 0px 10px 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 2px;
+	padding-top: 2px;
+	background-color: white;
+}
+
+.gras
+{
+	font-weight: bold;
+}
+
+.tab
+{
+	padding-left: 30px;
+}
+
+#section h1
+{
+	font-size: 30px;
+}
+
+#section h2
+{
+	font-size: 20px;
+}
+
+#footer
+{
+	border: solid black 1px;
+	border-radius: 10px 0px 10px 0px;
+	background-color: white;
+	margin-top: 0px;
+}
+
+#footer p
+{
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+#logo_W3C
+{
+	margin-left: 90%;
+}
+
+figcaption
+{
+	text-align: center;
+	font-style: italic;
+	padding-bottom: 40px;
+}

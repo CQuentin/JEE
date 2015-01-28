@@ -17,6 +17,8 @@
 
 	<!-- support JSR303 annotation if JSR 303 validation present on classpath -->
 	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- permet d'indiquer à la servlet qu'elle doit explorer les classes 
 	(des packages listés) et exploiter les annotations. -->
