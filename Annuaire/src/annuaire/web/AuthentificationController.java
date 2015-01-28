@@ -22,11 +22,6 @@ public class AuthentificationController {
 	
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
 	public String login () {
-		
-		if(user.isConnected()) {
-			return "redirect:/person/annuaire.htm";
-		}
-		
 		return "login";
 	}
 	
@@ -36,11 +31,7 @@ public class AuthentificationController {
 		if(result.hasErrors()) {
     		return "login";
     	}
-		
-		if(user.isConnected()) {
-			return "redirect:/person/annuaire.htm";
-		}
-		
+
 		String login = u.getLogin();
 		String password = u.getPassword();
 		

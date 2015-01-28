@@ -37,11 +37,7 @@ public class PWRetrievingController {
 		if(result.hasErrors()) {
     		return "login";
     	}
-		
-		if(user.isConnected()) {
-			return "redirect:/person/annuaire.htm";
-		}
-		
+	
 		String login = u.getLogin();
 		
 		Person p = daoPerson.findPerson(login);

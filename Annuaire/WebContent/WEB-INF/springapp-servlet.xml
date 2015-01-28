@@ -38,6 +38,10 @@
 			<mvc:mapping path="/person/*" />
        		<bean class="annuaire.web.Interceptor" />
        	</mvc:interceptor>
+       	<mvc:interceptor>
+			<mvc:mapping path="/auth/*" />
+       		<bean class="annuaire.web.AuthInterceptor" />
+       	</mvc:interceptor>
 	</mvc:interceptors> 
 
 </beans>
