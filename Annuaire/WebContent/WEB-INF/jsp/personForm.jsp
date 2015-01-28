@@ -18,6 +18,7 @@
 			<tr>
 				<td>Prénom :</td>
 				<td><form:input path="firstName" /></td>
+				<td><form:errors path="firstName"/></td>
 			</tr>
 			<tr>
 				<td>Email :</td>

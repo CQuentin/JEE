@@ -2,6 +2,8 @@ package annuaire.web;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -78,8 +80,7 @@ public class PersonController {
 	}
 
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
-	public String savePerson(@ModelAttribute Person p, BindingResult result) {
-		
+	public String savePerson(@ModelAttribute @Valid Person p, BindingResult result) {
 		if(result.hasErrors()) {
 			return "personForm";
 		}
@@ -103,7 +104,7 @@ public class PersonController {
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
-	public String saveNewPerson(@ModelAttribute Person p, BindingResult result) {
+	public String saveNewPerson(@ModelAttribute @Valid Person p, BindingResult result) {
 
 		if(result.hasErrors()) {
 			return "personAddition";
