@@ -17,10 +17,14 @@
 			<tr>
 				<td>Login :</td>
 				<td><form:input path="login" /></td>
+				<td><form:errors path="login" /></td>
+
 			</tr>
 			<tr>
 				<td>Nom :</td>
 				<td><form:input path="lastName" /></td>
+				<td><form:errors path="lastName" /></td>
+
 			</tr>
 			<tr>
 				<td>Prénom :</td>
@@ -31,6 +35,8 @@
 			<tr>
 				<td>Email :</td>
 				<td><form:input path="mail" /></td>
+				<td><form:errors path="mail" /></td>
+
 			</tr>
 			<tr>
 				<td>Site web :</td>
@@ -43,6 +49,8 @@
 			<tr>
 				<td>Mot de passe :</td>
 				<td><form:input path="password" /></td>
+				<td><form:errors path="password" /></td>
+
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>

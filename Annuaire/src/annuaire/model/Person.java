@@ -18,21 +18,24 @@ import javax.validation.constraints.Size;
 public class Person {
 
 	@Id
-	@NotNull(message ="Login obligatoire")
+	@NotNull(message ="Login obligatoire.")
+	@Size (min =1, message ="Login obligatoire.")
 	private String login;
-	@NotNull(message ="Nom obligatoire")
+	@NotNull(message ="Nom obligatoire.")
+	@Size (min =1, message ="Nom obligatoire.")
 	private String lastName;
-	@NotNull(message ="Prénom obligatoire")
-	@Size (min =1, message ="Prénom obligatoire")
+	@NotNull(message ="Prénom obligatoire.")
+	@Size (min =1, message ="Prénom obligatoire.")
 	private String firstName;
 	
-	@NotNull(message ="adresse email obligatoire.")
+	@NotNull(message ="Adresse email obligatoire.")
 	@Pattern(regexp=".+@.+\\.[a-z]+", message="Adresse email invalide.")
 	private String mail;
 	private String website;
 	
 	private Date dateOfBirth;
-	@NotNull(message ="Mot de passe obligatoire")
+	@NotNull(message ="Mot de passe obligatoire.")
+	@Size (min = 8, message ="Le mot de passe doit avoir au moins 8 caractères.")
 	private String password;
 	
 	@ManyToMany
