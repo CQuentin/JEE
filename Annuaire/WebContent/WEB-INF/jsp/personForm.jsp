@@ -5,11 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edition personne</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
+type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
+type="text/javascript"></script>
+<script src="<c:url value="/resources/js/validationEdition.js"/>"
+type="text/javascript"></script>
+
 </head>
 <body>
 
 	<h1>Edition personne</h1>
-	<form:form method="POST" commandName="person">
+	<form:form id="editForm" method="POST" commandName="person">
 		<table>
 			<tr>
 				<td>Nom :</td>

@@ -19,42 +19,9 @@ type="text/javascript"></script>
 type="text/javascript"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
 type="text/javascript"></script>
+<script src="<c:url value="/resources/js/validationAddition.js"/>"
+type="text/javascript"></script>
 
- <script>
-
-
-	$().ready(function() {
-		$("#addForm").validate({
-			rules: {
-				firstName: "required",
-				lastName: "required",
-				login: "required",
-				password: {
-					required: true,
-					minlength: 8
-				},
-				mail: {
-					required: true,
-					email: true
-				},
-				dateOfBirth: {
-					required: false,
-					dateISO: true				}
-			},
-			messages: {
-				firstName: "Prénom obligatoire.",
-				lastName: "Nom obligatoire.",
-				login: "Login obligatoire.",
-				password: {
-					required: "Mot de passe obligatoire.",
-					minlength: "Le mot de passe doit contenir au moins 8 caractères"
-				},
-				mail: "Adresse mail non valide.",
-				dateOfBirth: "La date doit être au format aaaa-mm-jj"
-			}
-		});
-	});
-	</script>
 </head>
 <body>
 	<h1>Ajout personne</h1>

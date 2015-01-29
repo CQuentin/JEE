@@ -17,11 +17,11 @@
 
 	<!-- support JSR303 annotation if JSR 303 validation present on classpath -->
 	<mvc:annotation-driven />
-	
+
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-	<!-- permet d'indiquer à la servlet qu'elle doit explorer les classes 
-	(des packages listés) et exploiter les annotations. -->
+	<!-- permet d'indiquer à la servlet qu'elle doit explorer les classes (des 
+		packages listés) et exploiter les annotations. -->
 	<context:component-scan base-package="annuaire.web" />
 
 	<bean id="viewResolver"
@@ -34,17 +34,19 @@
 
 	<jee:jndi-lookup id="daoPerson" jndi-name="java:global/Annuaire/DAOPerson" />
 	<jee:jndi-lookup id="emailSender" jndi-name="java:global/Annuaire/EmailSender" />
-	
+
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/person/*" />
-       		<bean class="annuaire.web.Interceptor" />
-       	</mvc:interceptor>
-       	<mvc:interceptor>
+			<mvc:mapping path="/person/edition.htm" />
+			<mvc:mapping path="/person/add.htm" />
+			<mvc:mapping path="/person/delete.htm" />
+			<bean class="annuaire.web.Interceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
 			<mvc:mapping path="/auth/*" />
-			<mvc:exclude-mapping path="/auth/logout.htm"/>
-       		<bean class="annuaire.web.AuthInterceptor" />
-       	</mvc:interceptor>
-	</mvc:interceptors> 
+			<mvc:exclude-mapping path="/auth/logout.htm" />
+			<bean class="annuaire.web.AuthInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>
