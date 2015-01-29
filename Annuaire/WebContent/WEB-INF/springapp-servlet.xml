@@ -42,6 +42,7 @@
        	</mvc:interceptor>
        	<mvc:interceptor>
 			<mvc:mapping path="/auth/*" />
+			<mvc:exclude-mapping path="/auth/logout.htm"/>
        		<bean class="annuaire.web.AuthInterceptor" />
        	</mvc:interceptor>
 	</mvc:interceptors> 
