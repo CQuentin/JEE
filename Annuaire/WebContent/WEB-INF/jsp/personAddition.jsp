@@ -1,35 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="urn:jsptagdir:/WEB-INF/tags/mestags/">
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Ajout personne</title>
-<!-- 	<script src="../js/dist/jquery.validate.js"></script>
- -->
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
 
-<!--include jQuery -->
+	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
 
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-	type="text/javascript"></script>
-<script
-	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
-	type="text/javascript"></script>
-<script
-	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
-	type="text/javascript"></script>
-<script src="<c:url value="/resources/js/validationAddition.js"/>"
-	type="text/javascript"></script>
+	<t:genericpage>
+		<jsp:attribute name="head">
+			<title>Ajout personne</title>
+    	</jsp:attribute>
 
-</head>
-<body>
-	<h1>Ajout personne</h1>
-	<form:form id="addForm" method="POST" commandName="person">
-		<table>
+		<jsp:attribute name="nav">
+			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
+    	</jsp:attribute>
+
+		<jsp:body>
+			<h1>Ajout personne</h1>
+			<form:form id="addForm" method="post" commandName="person">
+			<table>
 			<tr>
 				<td>Login :</td>
 				<td><form:input path="login" /></td>
@@ -72,14 +66,17 @@
 				<td>
 				<form:select path="groups" multiple="true">
 					<form:option value="" label="Séléctionner un groupe" />
- 					<form:options items="${groupsList}" itemLabel="groupname" itemValue="groupname" />
+ 					<form:options items="${groupsList}" itemLabel="groupname"
+									itemValue="groupname" />
 				</form:select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>
 			</tr>
-		</table>
-	</form:form>
-</body>
-</html>
+			</table>
+			</form:form>
+		</jsp:body>
+	</t:genericpage>
+
+</jsp:root>

@@ -1,40 +1,45 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="urn:jsptagdir:/WEB-INF/tags/mestags/">
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edition personne</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
-type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
-type="text/javascript"></script>
-<script src="<c:url value="/resources/js/validationEdition.js"/>"
-type="text/javascript"></script>
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
 
-</head>
-<body>
+	<!-- Définir ici les variables -->
 
-	<h1>Edition personne</h1>
-	<form:form id="editForm" method="POST" commandName="person">
+	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+
+	<t:genericpage>
+		<jsp:attribute name="head">
+			<title>Edition personne</title>
+    	</jsp:attribute>
+	
+		<jsp:attribute name="nav">
+			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
+    	</jsp:attribute>
+    	
+		<jsp:body>
+		<h1>Edition personne</h1>
+		<form:form id="editForm" method="post" commandName="person">
 		<table>
 			<tr>
 				<td>Nom :</td>
 				<td><form:input path="lastName" /></td>
-				<td><form:errors path="lastName" /></td>
+				<td><form:errors cssClass="error" path="lastName" /></td>
 			</tr>
 			<tr>
-				<td>Pr�nom :</td>
+				<td>Prénom :</td>
 				<td><form:input path="firstName" /></td>
-				<td><form:errors path="firstName" /></td>
+				<td><form:errors cssClass="error" path="firstName" /></td>
 			</tr>
 			<tr>
 				<td>Email :</td>
 				<td><form:input path="mail" /></td>
-				<td><form:errors path="mail" /></td>
-
+				<td><form:errors cssClass="error" path="mail" /></td>
 			</tr>
 			<tr>
 				<td>Site web :</td>
@@ -47,14 +52,14 @@ type="text/javascript"></script>
 			<tr>
 				<td>Mot de passe :</td>
 				<td><form:input path="password" /></td>
-				<td><form:errors path="password" /></td>
-
+				<td><form:errors cssClass="error" path="password" /></td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>
 			</tr>
 		</table>
-	</form:form>
+		</form:form>
+		</jsp:body>
+	</t:genericpage>
 
-</body>
-</html>
+</jsp:root>

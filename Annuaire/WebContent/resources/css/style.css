@@ -138,6 +138,10 @@ figcaption
 	text-align: right;
 }
 
+.error {
+	color: red;
+}
+
 #loginForm {
 	width: 400px;
 	height: 100px;

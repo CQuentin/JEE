@@ -1,31 +1,36 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
+<jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="urn:jsptagdir:/WEB-INF/tags/mestags/">
 
-<c:url var="detail" value="/person/detail.htm" />
-<c:url var="addPerson" value="/person/add.htm" />
-<c:url var="logout" value="/auth/logout.htm" />
-<c:url var="addGroup" value="/group/add.htm" />
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
 
+	<c:url var="detail" value="/person/detail.htm" />
 
-<html>
-<body>
-	<h1>Personnes</h1>
-	<p>
-		<a href="${logout}">Logout</a>
-	</p>
+	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
 
-	<p>
-		<a href="${addPerson}">Ajouter une nouvelle personne</a>
-	</p>
-	<p>
-		<a href="${addGroup}">Ajouter un nouveau groupe</a>
-	</p>
+	<t:genericpage>
+		<jsp:attribute name="head">
+			<title>Annuaire</title>
+    	</jsp:attribute>
+	
+		<jsp:attribute name="nav">
+			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
+    	</jsp:attribute>
 
-
-	<ul>
-		<c:forEach items="${persons}" var="p">
-			<li><a href="${detail}?id=${p.login}">${p.login} :
+		<jsp:body>
+			<h1>Personnes</h1>
+			<ul>
+			<c:forEach items="${persons}" var="p">
+				<li><a href="${detail}?id=${p.login}">${p.login} :
 					${p.firstName} ${p.lastName}</a></li>
-		</c:forEach>
-	</ul>
-</body>
-</html>
+			</c:forEach>
+			</ul>
+		</jsp:body>
+	</t:genericpage>
+
+</jsp:root>

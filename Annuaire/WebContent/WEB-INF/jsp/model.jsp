@@ -14,6 +14,10 @@
 	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
 
 	<t:genericpage>
+		<jsp:attribute name="head">
+			<!-- Ajouter ici ce qui doit être dans la balise head -->
+    	</jsp:attribute>
+	
 		<jsp:attribute name="nav">
 			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
     	</jsp:attribute>
