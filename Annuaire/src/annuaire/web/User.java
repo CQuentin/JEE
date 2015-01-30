@@ -55,6 +55,7 @@ public class User implements Serializable {
 	}
 	
 	public boolean isAdmin(){
+		if(groups != null)
 		for(Group g : groups){
 			if (g.getGroupname().equals("ADMINISTRATEUR")){
 				return true;

@@ -64,8 +64,8 @@
  			<tr>
 				<td>Groupe :</td>
 				<td>
-				<form:select path="groups" multiple="true">
-					<form:option value="" label="Séléctionner un groupe" />
+				<form:select path="groups" multiple="false">
+					<form:option value=NULL label="Séléctionner un groupe" />
  					<form:options items="${groupsList}" itemLabel="groupname"
 									itemValue="groupname" />
 				</form:select>
