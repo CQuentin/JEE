@@ -6,8 +6,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-import annuaire.model.Group;
 import annuaire.model.Person;
 import annuaire.services.IDAOPerson;
 
@@ -27,10 +27,10 @@ public class AuthentificationController {
 	}
 	
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
-	public String login (@ModelAttribute User u, BindingResult result) {
+	public ModelAndView login (@ModelAttribute User u, BindingResult result) {
 		
 		if(result.hasErrors()) {
-    		return "login";
+			return new ModelAndView("login", "error", "");
     	}
 
 		String login = u.getLogin();
@@ -39,7 +39,8 @@ public class AuthentificationController {
 		Person p = daoPerson.findPerson(login);
 		if (p == null || !p.getPassword().equals(password)) {
 			u.setPassword("");
-			return "redirect:login.htm";
+			return new ModelAndView("login", "error", "Login ou mot de passe invalide");
+			//return "redirect:login.htm";
 		}
 		
 		user.setConnected(true);
@@ -51,7 +52,8 @@ public class AuthentificationController {
 //			user.getGroups().add(tmp);
 //		}
 		
-		return "redirect:/person/annuaire.htm";
+		//return "redirect:/person/annuaire.htm";
+		return new ModelAndView("redirect:/person/annuaire.htm");
 	}
 	
 	@RequestMapping(value = "/logout.htm")
