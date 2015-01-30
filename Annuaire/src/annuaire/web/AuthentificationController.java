@@ -1,5 +1,7 @@
 package annuaire.web;
 
+import java.util.HashSet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import annuaire.model.Group;
 import annuaire.model.Person;
 import annuaire.services.IDAOPerson;
 
@@ -45,12 +48,13 @@ public class AuthentificationController {
 		
 		user.setConnected(true);
 		user.setLogin(login);
+		user.setGroups(new HashSet<Group>());
 		
-//		for(Group g : p.getGroups()){
-//			Group tmp = new Group();
-//			tmp.setGroupname(g.getGroupname());
-//			user.getGroups().add(tmp);
-//		}
+		for(Group g : p.getGroups()){
+			Group tmp = new Group();
+			tmp.setGroupname(g.getGroupname());
+			user.getGroups().add(tmp);
+		}
 		
 		//return "redirect:/person/annuaire.htm";
 		return new ModelAndView("redirect:/person/annuaire.htm");

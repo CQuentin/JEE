@@ -59,7 +59,7 @@
 					</c:otherwise>
 				</c:choose>
 
-				<c:if test="${user.getLogin() == 'login'}">
+				<c:if test="${user.isAdmin() == true}">
 					<br />
 					<a href="/Annuaire/person/add.htm">Créer personne</a>
 					<br />

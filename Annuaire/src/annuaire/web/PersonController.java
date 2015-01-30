@@ -1,7 +1,5 @@
 package annuaire.web;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +9,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -76,7 +73,7 @@ public class PersonController {
 		p.setWebsite("");
 		p.setDateOfBirth(null);
 		p.setPassword("");
-	//	p.setGroups(new HashSet<Group>());
+		p.setGroups(new HashSet<Group>());
 		return p;
 	}
 
@@ -87,11 +84,10 @@ public class PersonController {
 			return "redirect:annuaire.htm";
 		}
 
-		if(!p.getLogin().equals(user.getLogin()) && !p.getGroups().contains("ADMINISTRATEUR")) {
-			return "redirect:annuaire.htm";
+		if(p.getLogin().equals(user.getLogin()) || user.isAdmin()) {
+			return "personForm";
 		}
-
-		return "personForm";
+		return "redirect:annuaire.htm";		
 	}
 
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
@@ -104,19 +100,19 @@ public class PersonController {
 			return "redirect:annuaire.htm";
 		}
 
-		if(!p.getLogin().equals(user.getLogin()) && !p.getGroups().contains("ADMINISTRATEUR")) {
-			return "redirect:annuaire.htm";
+		if(p.getLogin().equals(user.getLogin()) || user.isAdmin()) {
+			daoPerson.savePerson(p);
+			return "redirect:detail.htm?id=" + p.getLogin();
 		}
-
-		daoPerson.savePerson(p);
-
-		return "redirect:detail.htm?id=" + p.getLogin();
+		return "redirect:annuaire.htm";
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.GET)
 	public String addPerson() {
-
-		return "personAddition";
+		if (user.isAdmin()){
+			return "personAddition";
+		}
+		return "redirect:annuaire.htm";
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
@@ -127,18 +123,13 @@ public class PersonController {
 			return "personAddition";
 		}
 
+		if (user.isAdmin()){
+			daoPerson.addPerson(p);
+			return "redirect:detail.htm?id=" + p.getLogin();
+		}
 
-//		for(Group g : user.getGroups()){
-//			if (g.getGroupname().equals("ADMINISTRATEUR")){
-				daoPerson.addPerson(p);
-				return "redirect:detail.htm?id=" + p.getLogin();
-//			}
-//		}
-
-		//return "redirect:annuaire.htm";
+		return "redirect:annuaire.htm";
 	}
-
-
 
 	@RequestMapping(value = "/delete.htm", method = RequestMethod.GET)
 	public String deletePerson(@ModelAttribute Person p) {
@@ -147,11 +138,9 @@ public class PersonController {
 			return "redirect:annuaire.htm";
 		}
 
-		if(!p.getGroups().contains("ADMINISTRATEUR")) {
-			return "redirect:annuaire.htm";
+		if (user.isAdmin()){
+			daoPerson.deletePerson(p.getLogin());
 		}
-
-		daoPerson.deletePerson(p.getLogin());
 
 		return "redirect:annuaire.htm";
 	}
@@ -172,9 +161,6 @@ public class PersonController {
 			@Override
 			protected Object convertElement(Object element)
 			{
-
-				System.out.println("-------------"+(String) element);
-
 				Set<Group> retour = new HashSet<Group>();
 				retour.add(daoGroup.findGroup((String) element));
 				return retour;

@@ -1,6 +1,7 @@
 package annuaire.web;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.context.annotation.Scope;
@@ -53,11 +54,21 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
+	public boolean isAdmin(){
+		for(Group g : groups){
+			if (g.getGroupname().equals("ADMINISTRATEUR")){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void flush() {
 		connected = false;
 		login = "";
 		password = "";
-		//groups.clear();
+		groups = new HashSet<Group>();
+		groups.clear();
 	}
 
 }
