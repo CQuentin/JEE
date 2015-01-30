@@ -34,7 +34,7 @@
 					</tr>
 					<tr>
 						<td>Mot de passe :</td>
-						<td><form:input path="password" /></td>
+						<td><form:password path="password" /></td>
 					</tr>
 					<tr>
 						<td class="right" colspan="3"><input type="submit" value="Envoyer" /></td>
@@ -43,6 +43,7 @@
 				</fieldset>
 			</form:form>
 			<div class="center">
+					<p><c:out value="${error}"/></p>
 				<a href="${retrievepw}">Mot de passe oublié ?</a>
 			</div>
 		</div>

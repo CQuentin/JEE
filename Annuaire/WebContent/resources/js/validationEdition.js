@@ -9,11 +9,12 @@
 				},
 				mail: {
 					required: true,
-					email: true
+					pattern: /.+@.+\.[a-z]+/
 				},
 				dateOfBirth: {
 					required: false,
-					dateISO: true
+					dateISO: true,
+					pattern: /\d\d\d\d-\d\d-\d\d/
 				}
 			},
 			messages: {
@@ -25,7 +26,7 @@
 				},
 				mail: {
 					required: "Adresse mail obligatoire.",
-					email: "Adresse mail non valide."
+					pattern: "Adresse mail non valide."
 				},
 				dateOfBirth: "La date doit être au format aaaa-mm-jj"
 			}

@@ -10,7 +10,7 @@
 				},
 				mail: {
 					required: true,
-					email: true
+					pattern: /.+@.+\\.[a-z]+/
 				},
 				dateOfBirth: {
 					required: false,
@@ -26,7 +26,7 @@
 					minlength: "Le mot de passe doit contenir au moins 8 caractères"
 				},
 				mail: {
-					email: "Adresse mail non valide.",
+					pattern: "Adresse mail non valide.",
 					required: "Adresse mail obligatoire."
 				},
 				dateOfBirth: "La date doit être au format aaaa-mm-jj"

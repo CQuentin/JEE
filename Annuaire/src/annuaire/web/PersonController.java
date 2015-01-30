@@ -1,17 +1,17 @@
 package annuaire.web;
 
-import java.util.ArrayList;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -156,20 +156,6 @@ public class PersonController {
 		return "redirect:annuaire.htm";
 	}
 
-	//	@ModelAttribute("groupsList")
-	//	public Map<Set<Group>, String> productTypes() {
-	//		
-	//		Collection<Group> groups = daoGroup.findAllGroups();
-	//		
-	//	    Map<Set<Group>,String> types = new LinkedHashMap<Set<Group>,String>();
-	//	    
-	//	    for(Group g: groups){
-	//	    	Set<Group> tmpSG = new HashSet<Group>();
-	//	    	tmpSG.add(g);
-	//	    	types.put(tmpSG, g.getGroupname());
-	//	    }
-	//	    return types;
-	//	}
 
 	@ModelAttribute("groupsList")
 	public List<Group> productTypes() {
@@ -194,6 +180,7 @@ public class PersonController {
 				return retour;
 			}
 		});
+		//binder.registerCustomEditor(Date.class,"dateOfBirth", new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 	}
 
 }
