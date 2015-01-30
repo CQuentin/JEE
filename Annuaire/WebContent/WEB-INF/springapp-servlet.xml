@@ -33,6 +33,7 @@
 	</bean>
 
 	<jee:jndi-lookup id="daoPerson" jndi-name="java:global/Annuaire/DAOPerson" />
+	<jee:jndi-lookup id="daoGroup" jndi-name="java:global/Annuaire/DAOGroup" />
 	<jee:jndi-lookup id="emailSender" jndi-name="java:global/Annuaire/EmailSender" />
 
 	<mvc:interceptors>

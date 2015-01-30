@@ -1,9 +1,11 @@
 package annuaire.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -13,10 +15,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "PERSON")
-public class Person {
+public class Person implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4665972864170969800L;
 	@Id
 	@NotNull(message ="Login obligatoire.")
 	@Size (min =1, message ="Login obligatoire.")
@@ -38,7 +47,7 @@ public class Person {
 	@Size (min = 8, message ="Le mot de passe doit avoir au moins 8 caractères.")
 	private String password;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name ="PERSON_GROUP", 
 	joinColumns =
 		@JoinColumn (name = "login_PERSON"),

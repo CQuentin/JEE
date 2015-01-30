@@ -10,17 +10,20 @@
 <title>Ajout personne</title>
 <!-- 	<script src="../js/dist/jquery.validate.js"></script>
  -->
- 
- <!--include jQuery -->
- 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
-type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
-type="text/javascript"></script>
+
+<!--include jQuery -->
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
+	type="text/javascript"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
+	type="text/javascript"></script>
 <script src="<c:url value="/resources/js/validationAddition.js"/>"
-type="text/javascript"></script>
+	type="text/javascript"></script>
 
 </head>
 <body>
@@ -63,6 +66,15 @@ type="text/javascript"></script>
 				<td><form:input path="password" /></td>
 				<td><form:errors path="password" /></td>
 
+			</tr>
+ 			<tr>
+				<td>Groupe :</td>
+				<td>
+				<form:select path="groups" multiple="true">
+					<form:option value="" label="Séléctionner un groupe" />
+ 					<form:options items="${groupsList}" itemLabel="groupname" itemValue="groupname" />
+				</form:select>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>

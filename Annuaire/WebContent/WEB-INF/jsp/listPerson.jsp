@@ -1,8 +1,10 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 
 <c:url var="detail" value="/person/detail.htm" />
-<c:url var="add" value="/person/add.htm" />
+<c:url var="addPerson" value="/person/add.htm" />
 <c:url var="logout" value="/auth/logout.htm" />
+<c:url var="addGroup" value="/group/add.htm" />
+
 
 <html>
 <body>
@@ -12,7 +14,10 @@
 	</p>
 
 	<p>
-		<a href="${add}">Ajouter une nouvelle personne</a>
+		<a href="${addPerson}">Ajouter une nouvelle personne</a>
+	</p>
+	<p>
+		<a href="${addGroup}">Ajouter un nouveau groupe</a>
 	</p>
 
 

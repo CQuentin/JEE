@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import annuaire.model.Group;
 import annuaire.model.Person;
 import annuaire.services.IDAOPerson;
 
@@ -43,6 +44,12 @@ public class AuthentificationController {
 		
 		user.setConnected(true);
 		user.setLogin(login);
+		
+//		for(Group g : p.getGroups()){
+//			Group tmp = new Group();
+//			tmp.setGroupname(g.getGroupname());
+//			user.getGroups().add(tmp);
+//		}
 		
 		return "redirect:/person/annuaire.htm";
 	}

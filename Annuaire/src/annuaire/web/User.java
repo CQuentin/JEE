@@ -1,10 +1,13 @@
 package annuaire.web;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
+
+import annuaire.model.Group;
 
 @Component()
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -15,8 +18,18 @@ public class User implements Serializable {
     private boolean connected = false;
     private String login;
     private String password;
+    private Set<Group> groups;
 
-    public String getLogin() {
+
+	public Set<Group> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(Set<Group> groups) {
+		this.groups = groups;
+	}
+
+	public String getLogin() {
         return login;
     }
 
@@ -44,6 +57,7 @@ public class User implements Serializable {
 		connected = false;
 		login = "";
 		password = "";
+		//groups.clear();
 	}
 
 }
