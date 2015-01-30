@@ -41,7 +41,7 @@ public class Person implements Serializable{
 	@Pattern(regexp=".+@.+\\.[a-z]+", message="Adresse email invalide.")
 	private String mail;
 	private String website;
-	
+
 	private Date dateOfBirth;
 	@NotNull(message ="Mot de passe obligatoire.")
 	@Size (min = 8, message ="Le mot de passe doit avoir au moins 8 caractères.")
