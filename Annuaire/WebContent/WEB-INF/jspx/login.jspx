@@ -43,7 +43,9 @@
 				</fieldset>
 			</form:form>
 			<div class="center">
+				<c:if test="${!empty error}">
 					<p><c:out value="${error}"/></p>
+				</c:if>
 				<a href="${retrievepw}">Mot de passe oublié ?</a>
 			</div>
 		</div>

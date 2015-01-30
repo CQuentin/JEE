@@ -28,8 +28,8 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView"></property>
-		<property name="prefix" value="/WEB-INF/jsp/"></property>
-		<property name="suffix" value=".jsp"></property>
+		<property name="prefix" value="/WEB-INF/jspx/"></property>
+		<property name="suffix" value=".jspx"></property>
 	</bean>
 
 	<jee:jndi-lookup id="daoPerson" jndi-name="java:global/Annuaire/DAOPerson" />
