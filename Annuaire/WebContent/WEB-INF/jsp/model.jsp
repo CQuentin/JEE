@@ -9,7 +9,7 @@
 		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
 
-	<c:url var="retrievepw" value="/auth/retrievepw.htm" />
+	<!-- Définir ici les variables -->
 
 	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
 
@@ -19,29 +19,7 @@
     	</jsp:attribute>
     	
 		<jsp:body>
-		<div id="loginForm">
-			<form:form method="post" commandName="user">
-				<fieldset>
-            	<legend class="gras"> Formulaire d'authentification :</legend>
-				<table>
-					<tr>
-						<td>Login :</td>
-						<td><form:input path="login" /></td>
-					</tr>
-					<tr>
-						<td>Mot de passe :</td>
-						<td><form:input path="password" /></td>
-					</tr>
-					<tr>
-						<td class="right" colspan="3"><input type="submit" value="Envoyer" /></td>
-					</tr>
-				</table>
-				</fieldset>
-			</form:form>
-			<div class="center">
-				<a href="${retrievepw}">Mot de passe oublié ?</a>
-			</div>
-		</div>
+			<!-- Ajouter ici le corps de la page -->
 		</jsp:body>
 	</t:genericpage>
 
