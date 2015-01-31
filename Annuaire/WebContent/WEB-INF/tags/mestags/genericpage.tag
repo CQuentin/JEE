@@ -44,7 +44,7 @@
 			<h1>Menu</h1>
 			<div>
 				<a href="/Annuaire/person/annuaire.htm">Liste personnes</a><br />
-				<a href="#">Liste groupes</a>
+				<a href="/Annuaire/group/groups.htm">Liste groupes</a>
 			</div>
 			<h1>Actions</h1>
 			<div>
@@ -63,7 +63,7 @@
 					<br />
 					<a href="/Annuaire/person/add.htm">Créer personne</a>
 					<br />
-					<a href="#">Créer groupe</a>
+					<a href="/Annuaire/group/add.htm">Créer groupe</a>
 					<br />
 				</c:if>
 				<jsp:invoke fragment="nav" />
