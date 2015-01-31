@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import org.apache.openejb.server.httpd.HttpRequest.Method;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
@@ -100,7 +101,16 @@ public class PersonController {
 			return "redirect:annuaire.htm";
 		}
 
+
 		if(p.getLogin().equals(user.getLogin()) || user.isAdmin()) {
+			if(p.getGroups() == null 
+					|| p.getGroups().isEmpty() 
+					|| p.getGroups().iterator().next() == null
+					|| p.getGroups().iterator().next().getGroupname() == null 
+					|| p.getGroups().iterator().next().getGroupname().isEmpty()) {
+				p.setGroups(null);
+			}
+
 			daoPerson.savePerson(p);
 			return "redirect:detail.htm?id=" + p.getLogin();
 		}
@@ -124,6 +134,13 @@ public class PersonController {
 		}
 
 		if (user.isAdmin()){
+			if(p.getGroups() == null 
+					|| p.getGroups().isEmpty() 
+					|| p.getGroups().iterator().next() == null
+					|| p.getGroups().iterator().next().getGroupname() == null 
+					|| p.getGroups().iterator().next().getGroupname().isEmpty()) {
+				p.setGroups(null);
+			}
 			daoPerson.addPerson(p);
 			return "redirect:detail.htm?id=" + p.getLogin();
 		}

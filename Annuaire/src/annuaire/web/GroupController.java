@@ -40,13 +40,12 @@ public class GroupController { //TODO gerer interceptor
 	@ModelAttribute("group")
 	public Group newGroup(
 			@RequestParam(value = "id", required = false) String groupname) {
-
 		if (groupname != null) {
 			return daoGroup.findGroup(groupname);
 		}
 
 		Group g = new Group();
-		g.setGroupname("");
+		g.setGroupname(null);
 		g.setPersons(new HashSet<Person>());
 		return g;
 	}
