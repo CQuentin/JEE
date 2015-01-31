@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "MYGROUP")
@@ -20,6 +21,7 @@ public class Group implements Serializable{
 	@Id
 	private int ID;
 	
+	@Size (min =1, max = 50, message ="Le nom du groupe doit compter entre 1 et 50 caractères.")
 	private String groupname;
 	
 	@ManyToMany(mappedBy="groups")

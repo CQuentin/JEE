@@ -10,6 +10,8 @@
 <c:url var="luminy" value="/resources/img/tn_logo_luminy.jpg" />
 <c:url var="jsAddition" value="/resources/js/validationAddition.js"/>
 <c:url var="jsEdition" value="/resources/js/validationEdition.js"/>
+<c:url var="jsAddition" value="/resources/js/validationGroupAddition.js"/>
+<c:url var="jsEdition" value="/resources/js/validationGroupEdition.js"/>
 
 <html>
 <head>
