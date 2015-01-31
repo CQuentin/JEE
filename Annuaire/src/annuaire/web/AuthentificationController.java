@@ -59,7 +59,8 @@ public class AuthentificationController {
 	 * Vérifie si le login et le mot de passe sont corrects, puis place les
 	 * informations de la personne en session via la classe User.
 	 * 
-	 * @param @see User u L'utilisateur en session.
+	 * @see User
+	 * @param u L'utilisateur en session.
 	 * @param result Le résultat du binding.
 	 * @return La vue du formulaire d'authentification avec un message en cas d'erreur(s),
 	 * la vue correspondant à la liste des personnes de l'annuaire sinon.
