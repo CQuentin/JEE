@@ -22,7 +22,7 @@ import annuaire.services.IDAOGroup;
 * GroupController le controller de Group
 *
 * @author Quentin Cheynet
-* Yoann Moisset
+* @author Yoann Moisset
 */
 
 @Controller()

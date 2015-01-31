@@ -28,7 +28,7 @@ import annuaire.services.IDAOPerson;
 * PersonController le controller de Person
 *
 * @author Quentin Cheynet
-* Yoann Moisset
+* @author Yoann Moisset
 */
 
 @Controller()
