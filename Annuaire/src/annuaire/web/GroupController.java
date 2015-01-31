@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import annuaire.model.Group;
 import annuaire.model.Person;
 import annuaire.services.IDAOGroup;
+import annuaire.services.IDAOPerson;
 
 /**
 * GroupController le controller de Group
@@ -29,9 +30,19 @@ import annuaire.services.IDAOGroup;
 @RequestMapping("/group")
 public class GroupController {
 
+	/**
+	 * L'utilisateur en session.
+	 * 
+	 * @see User
+	 */
 	@Autowired()
 	User user;
 
+	/**
+	 * Service d'accès aux données des Personnes de l'annuaire.
+	 * 
+	 * @see IDAOPerson
+	 */
 	@Autowired
 	IDAOGroup daoGroup;
 

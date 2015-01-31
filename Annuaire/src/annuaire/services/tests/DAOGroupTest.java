@@ -17,16 +17,34 @@ import org.springframework.transaction.annotation.Transactional;
 import annuaire.model.Group;
 import annuaire.services.IDAOGroup;
 
+/**
+ * Classe de tests de la classe DAOGroup.
+ * 
+ * @author Quentin Cheynet & Yoann Moisset
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 @TransactionConfiguration(transactionManager="transactionManager")
 @Transactional
 public class DAOGroupTest {
 
+	/**
+	 * Service d'accès aux données des Groupes.
+	 * 
+	 * @see IDAOGroup
+	 */
 	@Autowired
 	IDAOGroup daoGroup;
 	
+	/**
+	 * @see Group
+	 */
 	private Group g1;
+	
+	/**
+	 * @see Group
+	 */
 	private Group g2;
 
 	@Before

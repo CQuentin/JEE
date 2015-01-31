@@ -17,16 +17,34 @@ import org.springframework.transaction.annotation.Transactional;
 import annuaire.model.Person;
 import annuaire.services.IDAOPerson;
 
+/**
+ * Classe de tests de la classe DAOPerson.
+ * 
+ * @author Quentin Cheynet & Yoann Moisset
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 @TransactionConfiguration(transactionManager="transactionManager")
 @Transactional
 public class DAOPersonTest {
 	
+	/**
+	 * Service d'accès aux données des Personnes de l'annuaire.
+	 * 
+	 * @see IDAOPerson
+	 */
 	@Autowired
 	IDAOPerson daoPerson;
 	
+	/**
+	 * @see Person
+	 */
 	private Person p1;
+	
+	/**
+	 * @see Person
+	 */
 	private Person p2;
 
 	@Before

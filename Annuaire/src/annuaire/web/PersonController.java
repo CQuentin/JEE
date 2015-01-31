@@ -35,12 +35,27 @@ import annuaire.services.IDAOPerson;
 @RequestMapping("/person")
 public class PersonController {
 
+	/**
+	 * L'utilisateur en session.
+	 * 
+	 * @see User
+	 */
 	@Autowired()
 	User user;
 
+	/**
+	 * Service d'accès aux données des Personnes de l'annuaire.
+	 * 
+	 * @see IDAOPerson
+	 */
 	@Autowired
 	IDAOPerson daoPerson;
 
+	/**
+	 * Service d'accès aux données des Groupes.
+	 * 
+	 * @see IDAOGroup
+	 */
 	@Autowired
 	IDAOGroup daoGroup;
 
@@ -224,7 +239,6 @@ public class PersonController {
 
 		return "redirect:annuaire.htm";
 	}
-
 
 	/**
 	 * Créé une liste de tous les groupes existant via le DAO, et la renvoie
