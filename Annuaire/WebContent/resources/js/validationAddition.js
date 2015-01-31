@@ -10,11 +10,12 @@
 				},
 				mail: {
 					required: true,
-					pattern: /.+@.+\\.[a-z]+/
+					pattern: /.+@.+\.[a-z]+/
 				},
 				dateOfBirth: {
 					required: false,
-					dateISO: true
+					dateISO: true,
+					pattern: /\d\d\d\d-\d\d-\d\d/
 				}
 			},
 			messages: {

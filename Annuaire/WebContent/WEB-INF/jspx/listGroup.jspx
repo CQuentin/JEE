@@ -1,0 +1,50 @@
+<jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="urn:jsptagdir:/WEB-INF/tags/mestags/">
+
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
+
+	<c:url var="edit" value="/group/edition.htm" />
+	<c:url var="delete" value="/group/delete.htm" />
+	
+
+	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+
+	<t:genericpage>
+		<jsp:attribute name="head">
+			<title>Groupes</title>
+    	</jsp:attribute>
+
+		<jsp:attribute name="nav">
+			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
+    	</jsp:attribute>
+
+		<jsp:body>
+			<h1>Groupes</h1>
+			<ul>
+			<c:choose>
+				<c:when test="${user.isAdmin() == true}">
+					<c:forEach items="${groups}" var="g">
+						<li>
+							${g.groupname}
+							<a href="${edit}?id=${g.groupname}"> Modifier</a>
+							<a href="${delete}?id=${g.groupname}"> Supprimer</a>
+						</li>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${groups}" var="g">
+						<li>${g.groupname}</li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+			</ul>
+		</jsp:body>
+	</t:genericpage>
+
+</jsp:root>

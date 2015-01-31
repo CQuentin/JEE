@@ -1,9 +1,7 @@
 package annuaire.web;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.HashSet;
 
 import javax.validation.Valid;
 
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import annuaire.model.Group;
+import annuaire.model.Person;
 import annuaire.services.IDAOGroup;
 
 @Controller()
@@ -24,10 +23,10 @@ public class GroupController { //TODO gerer interceptor
 
 	@Autowired()
 	User user;
-	
+
 	@Autowired
 	IDAOGroup daoGroup;
-	
+
 	@RequestMapping(value = "/groups.htm")
 	public String list() {
 		return "listGroup";
@@ -38,19 +37,16 @@ public class GroupController { //TODO gerer interceptor
 		return daoGroup.findAllGroups();
 	}
 
-
-
-
 	@ModelAttribute("group")
 	public Group newGroup(
 			@RequestParam(value = "id", required = false) String groupname) {
-
 		if (groupname != null) {
 			return daoGroup.findGroup(groupname);
 		}
 
 		Group g = new Group();
-		g.setGroupname("");
+		g.setGroupname(null);
+		g.setPersons(new HashSet<Person>());
 		return g;
 	}
 
@@ -61,11 +57,11 @@ public class GroupController { //TODO gerer interceptor
 			return "redirect:groups.htm";
 		}
 
-		if(!user.getGroups().contains("ADMINISTRATEUR")) {
-			return "redirect:groups.htm";
+		if(user.isAdmin()) {
+			return "groupForm";
 		}
+		return "redirect:groups.htm";
 
-		return "groupForm";
 	}
 
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
@@ -73,23 +69,24 @@ public class GroupController { //TODO gerer interceptor
 		if(result.hasErrors()) {
 			return "groupForm";
 		}
-		
+
 		if(g == null || g.getGroupname().isEmpty()) {
 			return "redirect:groups.htm";
 		}
 
-		if(!user.getGroups().contains("ADMINISTRATEUR")) {
-			return "redirect:groups.htm";
+		if(user.isAdmin()) {
+			daoGroup.saveGroup(g);
 		}
-
-		daoGroup.saveGroup(g);
-
 		return "redirect:groups.htm";
+
 	}
 
-	@RequestMapping(value = "/add.htm")
+	@RequestMapping(value = "/add.htm", method = RequestMethod.GET)
 	public String addGroup() {
-		return "groupAddition";
+		if (user.isAdmin()){
+			return "groupAddition";
+		}
+		return "redirect:groups.htm";
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
@@ -99,12 +96,9 @@ public class GroupController { //TODO gerer interceptor
 			return "groupAddition";
 		}
 
-		if(!user.getGroups().contains("ADMINISTRATEUR")) {
-			return "redirect:groups.htm";
+		if (user.isAdmin()){
+			daoGroup.addGroup(g);
 		}
-		
-		daoGroup.addGroup(g);
-
 		return "redirect:groups.htm";
 	}
 
@@ -115,27 +109,15 @@ public class GroupController { //TODO gerer interceptor
 			return "redirect:groups.htm";
 		}
 
-		daoGroup.deleteGroup(g.getGroupname());
-
+		if (user.isAdmin()){
+			daoGroup.deleteGroup(g.getGroupname());
+		}
 		return "redirect:groups.htm";
 	}
-	
+
 	@ModelAttribute("user")
 	public User newUser() {
 		return user;
 	}
-	
-//	@ModelAttribute("groupsList")
-//	public Map<String, String> productTypes() {
-//		
-//		ArrayList<Group> groups = (ArrayList<Group>) daoGroup.findAllGroups();
-//		
-//	    Map<String, String> types = new LinkedHashMap<>();
-//	    
-//	    for(Group g: groups){
-//	    	types.put(g.getGroupname(), g.getGroupname());
-//	    }
-//	    return types;
-//	}
-	
+
 }

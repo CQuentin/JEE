@@ -20,12 +20,12 @@
     	</jsp:attribute>
 	
 		<jsp:attribute name="nav">
-			<c:if test="${user.login == person.login || user.login == 'login'}">
+			<c:if test="${user.login == person.login || user.isAdmin() == true}">
 				<br />
 				<a href="${edit}?id=${person.login}">Editer</a>
 				<br />
 			</c:if>
-			<c:if test="${user.login == 'login'}">
+			<c:if test="${user.isAdmin() == true}">
 				<a href="${delete}?id=${person.login}">Supprimer</a>
 				<br />
 			</c:if>
@@ -39,6 +39,9 @@
 				<c:otherwise>
 					<h1>${person.firstName} ${person.lastName}</h1>
 					<p>Site web : ${person.website}</p>
+					<c:if test="${person.groups.iterator().hasNext()}">
+						<p>Groupe : ${person.groups.iterator().next().groupname}</p>
+					</c:if>
 					<c:if test="${user.isConnected()}">
 						<p>Adresse électronique : ${person.mail}</p>
 						<p>Date de naissance : ${person.dateOfBirth}</p>

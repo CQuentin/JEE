@@ -1,0 +1,41 @@
+<jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="urn:jsptagdir:/WEB-INF/tags/mestags/">
+
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
+
+	<!-- Définir ici les variables -->
+
+	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+
+	<t:genericpage>
+		<jsp:attribute name="head">
+			<title>Edition groupe</title>
+    	</jsp:attribute>
+
+		<jsp:attribute name="nav">
+			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
+    	</jsp:attribute>
+
+		<jsp:body>
+		<h1>Edition groupe</h1>
+		<form:form id="editGroupForm" method="post" commandName="group">
+		<table>
+			<tr>
+				<td>Nom :</td>
+				<td><form:input path="groupname" /></td>
+				<td><form:errors cssClass="error" path="groupname" /></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="submit" /></td>
+			</tr>
+		</table>
+		</form:form>
+		</jsp:body>
+	</t:genericpage>
+</jsp:root>

@@ -10,6 +10,8 @@
 <c:url var="luminy" value="/resources/img/tn_logo_luminy.jpg" />
 <c:url var="jsAddition" value="/resources/js/validationAddition.js"/>
 <c:url var="jsEdition" value="/resources/js/validationEdition.js"/>
+<c:url var="jsAddition" value="/resources/js/validationGroupAddition.js"/>
+<c:url var="jsEdition" value="/resources/js/validationGroupEdition.js"/>
 
 <html>
 <head>
@@ -44,7 +46,7 @@
 			<h1>Menu</h1>
 			<div>
 				<a href="/Annuaire/person/annuaire.htm">Liste personnes</a><br />
-				<a href="#">Liste groupes</a>
+				<a href="/Annuaire/group/groups.htm">Liste groupes</a>
 			</div>
 			<h1>Actions</h1>
 			<div>
@@ -59,11 +61,11 @@
 					</c:otherwise>
 				</c:choose>
 
-				<c:if test="${user.getLogin() == 'login'}">
+				<c:if test="${user.isAdmin() == true}">
 					<br />
 					<a href="/Annuaire/person/add.htm">Créer personne</a>
 					<br />
-					<a href="#">Créer groupe</a>
+					<a href="/Annuaire/group/add.htm">Créer groupe</a>
 					<br />
 				</c:if>
 				<jsp:invoke fragment="nav" />

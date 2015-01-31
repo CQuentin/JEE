@@ -17,11 +17,11 @@
 		<jsp:attribute name="head">
 			<title>Edition personne</title>
     	</jsp:attribute>
-	
+
 		<jsp:attribute name="nav">
 			<!-- Ajouter ici les liens qui apparaiteront dans les actions -->
     	</jsp:attribute>
-    	
+
 		<jsp:body>
 		<h1>Edition personne</h1>
 		<form:form id="editForm" method="post" commandName="person">
@@ -54,6 +54,18 @@
 				<td><form:input path="password" /></td>
 				<td><form:errors cssClass="error" path="password" /></td>
 			</tr>
+			<c:if test="${user.isAdmin()}">
+				<tr>
+					<td>Groupe :</td>
+					<td>
+						<form:select path="groups" multiple="false">
+							<form:option value="" label="Séléctionner un groupe" />
+		 					<form:options items="${groupsList}" itemLabel="groupname"
+											itemValue="groupname" />
+						</form:select>
+					</td>
+				</tr>
+			</c:if>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>
 			</tr>
