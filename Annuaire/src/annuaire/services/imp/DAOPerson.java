@@ -10,12 +10,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import annuaire.model.Person;
 import annuaire.services.IDAOPerson;
 
 @Stateless
 @LocalBean()
 @Startup
+@Repository
 public class DAOPerson implements IDAOPerson {
 
 	@PersistenceContext(unitName = "myMySQLBase")
