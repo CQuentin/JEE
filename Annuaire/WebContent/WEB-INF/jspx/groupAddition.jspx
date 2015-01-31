@@ -28,6 +28,11 @@
 				<td>Nom :</td>
 				<td><form:input path="groupname" /></td>
 				<td><form:errors path="groupname" /></td>
+				<td>
+					<c:if test="${!empty error}">
+						<c:out value="${error}"/>
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" /></td>

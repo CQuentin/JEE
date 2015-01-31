@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import annuaire.model.Group;
 import annuaire.model.Person;
@@ -65,19 +66,22 @@ public class GroupController { //TODO gerer interceptor
 	}
 
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
-	public String saveGroup(@ModelAttribute @Valid Group g, BindingResult result) {
+	public ModelAndView saveGroup(@ModelAttribute @Valid Group g, BindingResult result) {
 		if(result.hasErrors()) {
-			return "groupForm";
+			return new ModelAndView("groupForm");
 		}
 
 		if(g == null || g.getGroupname().isEmpty()) {
-			return "redirect:groups.htm";
+			return new ModelAndView("redirect:groups.htm");
 		}
 
 		if(user.isAdmin()) {
+			if(daoGroup.findGroup(g.getGroupname()) != null) {
+				return new ModelAndView("groupForm","error","Ce groupe existe déjà.");
+			}
 			daoGroup.saveGroup(g);
 		}
-		return "redirect:groups.htm";
+		return new ModelAndView("redirect:groups.htm");
 
 	}
 
@@ -90,34 +94,37 @@ public class GroupController { //TODO gerer interceptor
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
-	public String saveNewGroup(@ModelAttribute @Valid Group g, BindingResult result) {
+	public ModelAndView saveNewGroup(@ModelAttribute @Valid Group g, BindingResult result) {
 
 		if(result.hasErrors()) {
-			return "groupAddition";
+			return new ModelAndView("groupAddition");
 		}
 
 		if (user.isAdmin()){
+			if(daoGroup.findGroup(g.getGroupname()) != null) {
+				return new ModelAndView("groupAddition","error","Ce groupe existe déjà.");
+			}
 			daoGroup.addGroup(g);
 		}
-		return "redirect:groups.htm";
+		return new ModelAndView("redirect:groups.htm");
 	}
 
-	@RequestMapping(value = "/delete.htm", method = RequestMethod.GET)
-	public String deleteGroup(@ModelAttribute Group g) {
+		@RequestMapping(value = "/delete.htm", method = RequestMethod.GET)
+		public String deleteGroup(@ModelAttribute Group g) {
 
-		if(g == null || g.getGroupname().isEmpty()) {
+			if(g == null || g.getGroupname().isEmpty()) {
+				return "redirect:groups.htm";
+			}
+
+			if (user.isAdmin()){
+				daoGroup.deleteGroup(g.getGroupname());
+			}
 			return "redirect:groups.htm";
 		}
 
-		if (user.isAdmin()){
-			daoGroup.deleteGroup(g.getGroupname());
+		@ModelAttribute("user")
+		public User newUser() {
+			return user;
 		}
-		return "redirect:groups.htm";
-	}
 
-	@ModelAttribute("user")
-	public User newUser() {
-		return user;
 	}
-
-}

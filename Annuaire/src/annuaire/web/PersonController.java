@@ -7,7 +7,6 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
-import org.apache.openejb.server.httpd.HttpRequest.Method;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import annuaire.model.Group;
 import annuaire.model.Person;
@@ -126,14 +126,16 @@ public class PersonController {
 	}
 
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
-	public String saveNewPerson(@ModelAttribute @Valid Person p, BindingResult result) {
+	public ModelAndView saveNewPerson(@ModelAttribute @Valid Person p, BindingResult result) {
 
 		if(result.hasErrors()) {
-			System.out.println(result.getFieldError());
-			return "personAddition";
+			return new ModelAndView("personAddition","error","");
 		}
 
 		if (user.isAdmin()){
+			
+
+				
 			if(p.getGroups() == null 
 					|| p.getGroups().isEmpty() 
 					|| p.getGroups().iterator().next() == null
@@ -141,11 +143,14 @@ public class PersonController {
 					|| p.getGroups().iterator().next().getGroupname().isEmpty()) {
 				p.setGroups(null);
 			}
+			if(daoPerson.findPerson(p.getLogin()) != null) {
+				return new ModelAndView("personAddition","error","Login déjà existant.");
+			}
 			daoPerson.addPerson(p);
-			return "redirect:detail.htm?id=" + p.getLogin();
+			return new ModelAndView("redirect:detail.htm?id=" + p.getLogin());
 		}
 
-		return "redirect:annuaire.htm";
+		return new ModelAndView("redirect:annuaire.htm");
 	}
 
 	@RequestMapping(value = "/delete.htm", method = RequestMethod.GET)
