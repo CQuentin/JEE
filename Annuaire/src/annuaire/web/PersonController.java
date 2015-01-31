@@ -136,7 +136,9 @@ public class PersonController {
 	 */
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
 	public String savePerson(@ModelAttribute @Valid Person p, BindingResult result) {
+		
 		if(result.hasErrors()) {
+
 			return "personForm";
 		}
 
