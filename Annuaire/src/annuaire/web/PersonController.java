@@ -1,5 +1,6 @@
 package annuaire.web;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -152,15 +153,13 @@ public class PersonController {
 	@RequestMapping(value = "/edition.htm", method = RequestMethod.POST)
 	public String savePerson(@ModelAttribute @Valid Person p, BindingResult result) {
 		
-		if(result.hasErrors()) {
-
+		if(result.hasErrors() && (result.getGlobalErrorCount() > 1 && p.getDateOfBirth() == null)) {
 			return "personForm";
 		}
 
 		if(p == null || p.getLogin().isEmpty()) {
 			return "redirect:annuaire.htm";
 		}
-
 
 		if(p.getLogin().equals(user.getLogin()) || user.isAdmin()) {
 			if(p.getGroups() == null 
@@ -200,8 +199,8 @@ public class PersonController {
 	 */
 	@RequestMapping(value = "/add.htm", method = RequestMethod.POST)
 	public ModelAndView saveNewPerson(@ModelAttribute @Valid Person p, BindingResult result) {
-
-		if(result.hasErrors()) {
+		
+		if(result.hasErrors() && (result.getGlobalErrorCount() > 1 && p.getDateOfBirth() == null)) {
 			return new ModelAndView("personAddition","error","");
 		}
 
