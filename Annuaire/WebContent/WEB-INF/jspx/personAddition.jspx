@@ -28,6 +28,11 @@
 				<td>Login :</td>
 				<td><form:input path="login" /></td>
 				<td><form:errors path="login" /></td>
+				<td>
+					<c:if test="${!empty error}">
+						<c:out value="${error}"/>
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td>Nom :</td>

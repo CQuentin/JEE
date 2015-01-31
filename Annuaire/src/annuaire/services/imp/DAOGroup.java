@@ -15,6 +15,13 @@ import org.springframework.stereotype.Repository;
 import annuaire.model.Group;
 import annuaire.services.IDAOGroup;
 
+/**
+* DAOGroup La classe qui permet d'accéder à la table MYGROUP de la base de donnée
+*
+* @author Quentin Cheynet
+* @author Yoann Moisset
+*/
+
 @Stateless
 @LocalBean()
 @Startup

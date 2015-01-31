@@ -10,8 +10,8 @@
 <c:url var="luminy" value="/resources/img/tn_logo_luminy.jpg" />
 <c:url var="jsAddition" value="/resources/js/validationAddition.js"/>
 <c:url var="jsEdition" value="/resources/js/validationEdition.js"/>
-<c:url var="jsAddition" value="/resources/js/validationGroupAddition.js"/>
-<c:url var="jsEdition" value="/resources/js/validationGroupEdition.js"/>
+<c:url var="jsGAddition" value="/resources/js/validationGroupAddition.js"/>
+<c:url var="jsGEdition" value="/resources/js/validationGroupEdition.js"/>
 
 <html>
 <head>
@@ -30,6 +30,9 @@
 	type="text/javascript"></script>
 <script src="${jsAddition}" type="text/javascript"></script>
 <script src="${jsEdition}" type="text/javascript"></script>
+<script src="${jsGAddition}" type="text/javascript"></script>
+<script src="${jsGEdition}" type="text/javascript"></script>
+
 
 </head>
 <body>

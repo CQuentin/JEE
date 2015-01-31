@@ -15,6 +15,13 @@ import org.springframework.stereotype.Repository;
 import annuaire.model.Person;
 import annuaire.services.IDAOPerson;
 
+/**
+* DAOPerson La classe qui permet d'accéder à la table PERSON de la base de donnée
+*
+* @author Quentin Cheynet
+* @author Yoann Moisset
+*/
+
 @Stateless
 @LocalBean()
 @Startup
