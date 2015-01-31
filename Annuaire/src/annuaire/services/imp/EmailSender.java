@@ -15,11 +15,26 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import annuaire.services.IEmailSender;
+
+/**
+ * Classe de service d'envoi de mail. 
+ * Basé sur l'API JavaMail.
+ * 
+ * @author Quentin Cheynet & Yoann Moisset
+ *
+ */
+
 @Stateless
 @LocalBean()
 @Startup
 public class EmailSender implements IEmailSender {
 
+	/**
+	 * Méthode permettant l'envoi d'un mail.
+	 * 
+	 * @param dest Adresse mail du destinataire.
+	 * @param message Corps du message.
+	 */
 	@Override
 	public void send(String dest, String message) {
 		
