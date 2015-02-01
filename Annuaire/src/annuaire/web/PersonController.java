@@ -1,6 +1,5 @@
 package annuaire.web;
 
-import java.sql.Date;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -267,7 +266,6 @@ public class PersonController {
 				return retour;
 			}
 		});
-		//binder.registerCustomEditor(Date.class,"dateOfBirth", new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 	}
 
 }

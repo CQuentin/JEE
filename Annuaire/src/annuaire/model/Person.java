@@ -35,21 +35,21 @@ public class Person implements Serializable{
 	 */
 	@Id
 	@NotNull(message = "Login obligatoire.")
-	@Size (min = 1, message = "Login obligatoire.")
+	@Size (min = 1, max = 20, message = "Login obligatoire.")
 	private String login;
 	
 	/**
 	 * Nom de la personne.
 	 */
 	@NotNull(message = "Nom obligatoire.")
-	@Size (min = 1, message = "Nom obligatoire.")
+	@Size (min = 1, max = 20, message = "Nom obligatoire.")
 	private String lastName;
 	
 	/**
 	 * Prénom de la personne.
 	 */
 	@NotNull(message = "Prénom obligatoire.")
-	@Size (min = 1, message = "Prénom obligatoire.")
+	@Size (min = 1, max = 20, message = "Prénom obligatoire.")
 	private String firstName;
 	
 	/**
@@ -57,11 +57,13 @@ public class Person implements Serializable{
 	 */
 	@NotNull(message = "Adresse email obligatoire.")
 	@Pattern(regexp = ".+@.+\\.[a-z]+", message = "Adresse email invalide.")
+	@Size (min = 5, max = 50, message = "L'adresse mail doit avoir entre 5 et 50 caractères")
 	private String mail;
 	
 	/**
 	 * Adresse du site web de la personne.
 	 */
+	@Size(max = 50, message = "Le site web ne peut pas contenir plus de 50 caractère") 
 	private String website;
 
 	/**
@@ -73,7 +75,7 @@ public class Person implements Serializable{
 	 * Mot de passe de la personne.
 	 */
 	@NotNull(message = "Mot de passe obligatoire.")
-	@Size (min = 8, message = "Le mot de passe doit avoir au moins 8 caractères.")
+	@Size (min = 8, max=40, message = "Le mot de passe doit avoir entre 8 et 40 caractères.")
 	private String password;
 	
 	/**
